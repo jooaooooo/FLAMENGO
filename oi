@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Link para o arquivo CSS externo -->
+    <title>Pedido Irrecusável</title>
+</head>
+<body>
+    <div class="box">
+        <div id="question">
+            <p>C*zinho hoje?</p>
+            <div class="buttons-container">
+                <button id="yes">Sim</button>
+                <button id="no">Não</button>
+            </div>
+        </div>
+        <div id="congrats-message"></div> <!-- Container para a mensagem de parabéns -->
+    </div>
+</body>
+<script src="script.js"></script> <!-- Adicionando o arquivo JavaScript externo -->
+</html>
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f2f2f2; /* Cor de fundo suave */
+}
+
+.box {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Sombra suave */
+    padding: 30px;
+}
+
+.box p {
+    font-size: 24px;
+    color: #333;
+    animation: rotate 3s linear infinite; /* Adicionando a animação de rotação */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Adicionando sombra ao texto */
+}
+
+.buttons-container {
+    margin-top: 20px;
+}
+
+button {
+    height: 40px;
+    width: 100px;
+    background: #007bff; /* Azul vívido */
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+
+button:hover {
+    background-color: #0056b3; /* Alteração de cor ao passar o mouse */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+let buttonYes = document.getElementById('yes');
+let buttonNo = document.getElementById('no');
+let box = document.querySelector('.box');
+let questionDiv = document.getElementById('question');
+let congratsMessageDiv = document.getElementById('congrats-message');
+
+buttonNo.addEventListener('click', function () {
+    box.style.animation = 'rotate 3s linear infinite'; // Adicionando a animação de rotação à caixa quando o botão "Não" for clicado
+});
+
+buttonYes.addEventListener('click', function () {
+    // Escondendo a div que contém a pergunta e as alternativas
+    questionDiv.style.display = 'none';
+
+    // Criando e adicionando a mensagem de parabéns
+    let congratsMessage = document.createElement('p');
+    congratsMessage.textContent = 'Parabéns! 🎉 Você aceitou o convite!';
+    congratsMessage.style.fontSize = '24px';
+    congratsMessage.style.color = '#007bff';
+    congratsMessage.style.marginTop = '20px';
+    congratsMessageDiv.appendChild(congratsMessage);
+});
